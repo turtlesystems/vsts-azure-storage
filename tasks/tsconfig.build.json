@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "outDir": "../build/production",
+    "rootDir": "../",
+    "sourceMap": true
+  },
+  "exclude": [
+    "common",
+    "typings"
+  ]
+}

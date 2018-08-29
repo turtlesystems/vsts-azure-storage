@@ -1,0 +1,59 @@
+{
+    "manifestVersion": "1",
+    "id": "azure-storage-vsts-tasks",
+    "name": "Azure Storage",
+    "version": "0.0.1",
+    "publisher": "Turtlesystems",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "description": "Tasks to assist with the creation of storage accounts, containers therein and uploading of files.",
+    "categories": [
+        "Build and release"
+    ],
+    "galleryFlags": [
+    ],
+    "icons": {
+        "default": "images/azurestorage.png"
+    },
+    "content": {
+        "details": {
+            "path": "overview.md"
+        },
+        "license": {
+            "path": "license.txt"
+        }
+    },
+    "screenshots": [
+    ],
+    "files": [
+        {
+            "path": "tasks"
+        }
+    ],
+    "links": {
+        "home": {
+            "uri": "https://github.com/turtlesystems/vsts-azure-storage/wiki"
+        },
+        "getstarted": {
+            "uri": "https://github.com/turtlesystems/vsts-azure-storage/wiki/Getting-Started"
+        },
+        "issues": {
+            "uri": "https://github.com/turtlesystems/vsts-azure-storage/issues"
+        }
+    },
+    "contributions": [
+        {
+            "id": "vsts-chef-tasks-environment-cookbook-version-constraint",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "tasks/upload_files"
+            }
+        }
+    ]
+}

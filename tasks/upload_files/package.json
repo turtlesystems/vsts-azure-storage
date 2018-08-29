@@ -1,0 +1,15 @@
+{
+    "name": "task-upload-files",
+    "version": "0.0.1",
+    "description": "Upload files to Azure Storage",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "azure-arm-resource": "^3.1.1-preview",
+        "azure-arm-storage": "^4.0.0",
+        "azure-storage": "^2.8.2",
+        "ms-rest-azure": "^2.5.5",
+        "sprintf-js": "^1.1.1",
+        "to-time": "^1.0.2",
+        "vsts-task-lib": "^2.4.0"
+    }
+}

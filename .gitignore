@@ -1,0 +1,10 @@
+node_modules
+typings
+dist
+build
+bin
+*.js
+*.map
+.vscode/settings.json
+local
+.taskkey

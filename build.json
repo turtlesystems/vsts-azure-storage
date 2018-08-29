@@ -1,0 +1,49 @@
+{
+    "dirs": {
+      "output": "build"
+    },
+    "task_libs": {
+      "chefapi.ts": [
+        "env_version_constraint",
+        "env_vsts_variables"
+      ],
+      "settings.ts": [
+        "cookbook_version",
+        "env_version_constraint",
+        "env_vsts_variables",
+        "exec_chef_client",
+        "exec_inspec",
+        "install_chefdk",
+        "install_inspec",
+        "publish_supermarket",
+        "upload_cookbook",
+        "gem_install",
+        "exec_knife",
+        "linting",
+        "test_kitchen",
+        "cookbook_gems"
+      ],
+      "utils.ts": [
+        "publish_supermarket",
+        "upload_cookbook",
+        "install_chefdk",
+        "install_inspec",
+        "exec_inspec",
+        "linting",
+        "test_kitchen",
+        "cookbook_gems"
+      ]
+    },
+    "files": {
+      "task": [
+        "icon.png",
+        "task.json"
+      ],
+      "extension": [
+        "vss-extension.json",
+        "overview.md",
+        "license.txt",
+        "images"
+      ]
+    }
+  }
