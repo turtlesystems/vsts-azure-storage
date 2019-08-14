@@ -43,7 +43,7 @@ export function create (options, build_config) {
 
       // create the uuid for the task, this needs to be overwritten from the production version
       // so that it has a unique name
-      let task_id = uuid(namespace, sprintf("vsts-chef-tasks.%s.preview", task_name));
+      let task_id = uuid(namespace, sprintf("azure-storage-tasks.%s.preview", task_name));
 
       let task_manifest_file = path.join(preview_dir, "tasks", task_name, "task.json");
 
