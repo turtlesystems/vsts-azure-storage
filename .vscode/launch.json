@@ -8,30 +8,15 @@
             "type": "node",
             "request": "launch",
             "name": "Upload Files",
-            "program": "${workspaceFolder}/tasks\\upload_files\\upload_files.ts",
-            "outFiles": [
-                "${workspaceFolder}/tasks/upload_files/**/*.js"
+            "args": [
+                "${workspaceFolder}/tasks\\upload_files\\upload_files.ts"
             ],
             "env": {
-                "NODE_ENV": "dev",
-                "CONNECTEDSERVICENAME": "debugtask",
-                "SUBSCRIPTIONID": "1e0b427a-d58b-494e-ae4f-ee558463ebbf",
-                "SERVICEPRINCIPALID": "fffd1391-b04f-4e6c-a6d5-d264af9cd701",
-                "SERVICEPRINCIPALKEY": "681238a5-11a1-4121-b0d9-1c1a26b059c9",
-                "TENANTID": "a2b2d6bc-afe1-4696-9c37-f97a7ac416d7",
-                "RESOURCEGROUPNAME": "rjs-debug-1",
-                "ACTION": "create",
-                "LOCATION": "uksouth",
-                "CONTAINERNAME": "templates",
-                "UPLOADDIRECTORY": "c:/users/russells/workspaces/azure/azure-managed-automate/build/working",
-                "STORAGEACCOUNTNAME": "8b875bc470d340e6b182c5f5",
-                "SASTOKENSTARTTIME": "1m",
-                "SASTOKENEXPIRYTIME": "1h",
-                "VSTSASTOKENVARIABLENAME": ""
+                "TS_NODE_PROJECT": "${workspaceFolder}/tasks/tsconfig.json"
             },
+            "envFile": "${workspaceFolder}/.env",
             "sourceMaps": true,
             "runtimeArgs": [
-                "--nolazy",
                 "-r",
                 "ts-node/register"
             ],

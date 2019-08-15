@@ -7,6 +7,7 @@
 // Include necessary libraries
 import * as tl from "azure-pipelines-task-lib/task";
 import * as msRestAzure from "ms-rest-azure";
+import * as msRestNodeAuth from "@azure/ms-rest-nodeauth";
 import {sprintf} from "sprintf-js";
 import * as toTime from "to-time";
 
@@ -16,6 +17,7 @@ export class TaskParameters {
     public resourceGroupName: string;
     public location: string;
     public credentials: msRestAzure.ApplicationTokenCredentials;
+    public azureCredentials: msRestNodeAuth.ApplicationTokenCredentials;
     public storageAccountName: string;
     public storageAccountType: string = "Standard_LRS";
     public containerName: string;
@@ -41,6 +43,18 @@ export class TaskParameters {
         return credentials;
     }
 
+    private async getAzureCredentials(connectedService: string): Promise<msRestNodeAuth.ApplicationTokenCredentials> {
+
+        // interrogate the connected service to get the SPN details
+        let clientId: string = this.getValue("servicePrincipalId", false, "authorisation", connectedService);
+        let clientSecret: string = this.getValue("servicePrincipalKey", false, "authorisation", connectedService);
+        let tenantId: string = this.getValue("tenantId", false, "authorisation", connectedService);
+
+        let credentials = await msRestNodeAuth.loginWithServicePrincipalSecret(clientId, clientSecret, tenantId);
+
+        return credentials;
+    }
+
     /**
      * Return this class with all the task parameters that have been specified
      *
@@ -56,6 +70,7 @@ export class TaskParameters {
             let connectedService = this.getValue("ConnectedServiceName", true, "input");
             this.subscriptionId = this.getValue("SubscriptionId", true, "data", connectedService);
             this.credentials = await this.getCredentials(connectedService);
+            this.azureCredentials = await this.getAzureCredentials(connectedService);
 
             // Populate the class properties with task parameters
             this.resourceGroupName =  this.getValue("resourceGroupName", true, "input");

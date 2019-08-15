@@ -35,9 +35,15 @@ export class AzureResources {
     public async createResources(): Promise<void> {
         // login to get the necessary client
         let rmClient = new this.ResourceManagementClient(this.taskParameters.credentials, this.taskParameters.subscriptionId);
-        let smClient = new this.StorageManagementClient(this.taskParameters.credentials, this.taskParameters.subscriptionId);
+        let smClient = new this.StorageManagementClient(this.taskParameters.azureCredentials, this.taskParameters.subscriptionId);
 
-        await this.createResourceGroupIfRequired(rmClient);
+        try {
+            await this.createResourceGroupIfRequired(rmClient);
+        } catch (err) {
+            tl.setResult(tl.TaskResult.Failed, err);
+            return;
+        }
+
         await this.createStorageAccountIfRequired(smClient);
         await this.createContainerIfRequired(smClient);
         let sasDetails = await this.createSASToken(smClient);
@@ -170,8 +176,7 @@ export class AzureResources {
         console.log(tl.loc("CheckStorageAccountExists", this.taskParameters.storageAccountName));
         return new Promise<boolean>((resolve, reject) => {
 
-            client.storageAccounts.checkNameAvailability(this.taskParameters.storageAccountName,
-                                                        (error, exists, request, response) => {
+            client.storageAccounts.checkNameAvailability(this.taskParameters.storageAccountName, (error, exists) => {
                 if (error) {
                     if (this.taskParameters.isDev) {
                         console.log(Utils.getError(error));
