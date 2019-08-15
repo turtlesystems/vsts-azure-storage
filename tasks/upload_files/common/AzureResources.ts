@@ -49,7 +49,12 @@ export class AzureResources {
         let sasDetails = await this.createSASToken(smClient);
 
         // upload the files in the specified directory
-        await this.uploadFilesToContainer();
+        try {
+            await this.uploadFilesToContainer();
+        } catch (err) {
+            tl.setResult(tl.TaskResult.Failed, err);
+            return;
+        }
 
         // return the SAS token to the calling function
         console.log(tl.loc("SASToken", sasDetails[0]));
