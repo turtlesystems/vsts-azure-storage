@@ -326,7 +326,7 @@ export class AzureResources {
             // a list of the files that need to be uploaded
             let items = tl.find(this.taskParameters.uploadDirectory);
 
-            tl.debug(sprintf("Files to upload: %d", items.length));
+            console.log(sprintf("Files to upload: %d", items.length));
 
             // iterate around the items that have been returned
             let stat;
