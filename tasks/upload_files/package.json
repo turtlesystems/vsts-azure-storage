@@ -6,6 +6,7 @@
     "dependencies": {
         "azure-arm-resource": "^7.3",
         "@azure/arm-storage": "^9.0",
+        "@azure/ms-rest-nodeauth": "^3.0.1",
         "azure-pipelines-task-lib": "^2.8.0",
         "azure-storage": "^2.10",
         "ms-rest-azure": "^3.0",
